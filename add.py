@@ -20,6 +20,12 @@ with shelve.open(playlist) as file:
 	# Create a list in the key if it has not been created yet
 	file.setdefault('links', [])
 	
+	# Check if the video id is a duplicate
+	for pair in file['links']:
+		if pair[1] == id:
+			print("Video ID already exists in playlist.")
+			sys.exit()
+		
 	# "Copy" the list to a variable and "copy" it back to the key
 	links = file['links']
 	links.append((title, id))
