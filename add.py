@@ -31,6 +31,8 @@ with shelve.open(playlist) as file:
 	links.append((title, id))
 	file['links'] = links
 	
-	# Print out the titles and ids of videos already in the file
-	for pair in file['links']:
-		print(pair[0], pair[1])
+	# Print the title and video id added
+	print("Added", title, "to the playlist", playlist)
+	
+	# Print the total number of videos in playlist
+	print(playlist, "now has", len(file['links']), "videos")
