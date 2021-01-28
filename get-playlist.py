@@ -22,8 +22,16 @@ if not os.path.exists("C:\\Playlists\\{}.dat".format(playlist)):
 	sys.exit()
 	
 with shelve.open(playlist) as file:
+	print("There are", len(file['links']), "videos in", playlist)
+	# Print out the titles and ids of videos in the file
+	for pair in file['links']:
+		print(pair[0], pair[1])
+		
+	print("\nURL:")
+		
 	link = "http://www.youtube.com/watch_videos?video_ids="
 	
+	# Generate the URL for the playlist
 	for pair in file['links']:
 		link = link + pair[1] + ","
 		
